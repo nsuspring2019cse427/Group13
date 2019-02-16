@@ -11,3 +11,11 @@
 /build
 /captures
 .externalNativeBuild
+/.gradle/
+app/libs/
+/.idea/
+/gradle.properties
+/gradlew
+/Client.iml
+/settings.gradle
+/gradlew.bat
