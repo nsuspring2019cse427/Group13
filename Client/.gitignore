@@ -19,3 +19,6 @@ app/libs/
 /Client.iml
 /settings.gradle
 /gradlew.bat
+
+/app/build/
+/app/app.iml
