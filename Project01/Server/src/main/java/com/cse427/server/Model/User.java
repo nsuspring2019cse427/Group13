@@ -18,6 +18,15 @@ public class User {
     private String password;
     private boolean isActive;
 
+    public User(String email, String userName, String password, boolean isActive) {
+        this.email = email;
+        this.userName = userName;
+        this.password = password;
+        this.isActive = isActive;
+    }
+
+    public User() {
+    }
 
     public Long getId() {
         return id;

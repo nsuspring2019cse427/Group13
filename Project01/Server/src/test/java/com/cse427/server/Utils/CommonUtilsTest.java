@@ -1,6 +1,6 @@
 package com.cse427.server.Utils;
 
-import com.cse427.server.model.User;
+import com.cse427.server.Model.User;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 import org.junit.Before;

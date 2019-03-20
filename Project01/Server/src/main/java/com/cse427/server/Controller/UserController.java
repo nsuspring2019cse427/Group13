@@ -19,9 +19,13 @@ import java.util.Optional;
 public class UserController {
 
 
-    @Autowired
     UserRepository userRepository;
 
+
+    @Autowired
+    public UserController(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @PostMapping("/signUp")
     public ResponseCommon<User> signUpUser(User user) {
