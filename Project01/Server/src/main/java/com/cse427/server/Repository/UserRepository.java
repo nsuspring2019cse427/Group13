@@ -14,4 +14,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Query("select u from User u where userName=?1 and active=?2")
     Optional<User> getUserByUserNameAndActive(String userName, boolean isActive);
 
+
 }
