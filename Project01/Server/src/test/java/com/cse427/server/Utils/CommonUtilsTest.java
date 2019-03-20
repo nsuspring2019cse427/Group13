@@ -6,13 +6,9 @@ import junitparams.Parameters;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoints;
-import org.junit.experimental.theories.Theory;
 import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
 
-import java.util.Arrays;
-
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
 @RunWith(JUnitParamsRunner.class)
 public class CommonUtilsTest {
@@ -22,11 +18,6 @@ public class CommonUtilsTest {
     @DataPoints
     public static String[] Data_User_Name = {"Majed", "Rahman", "Jhon"};
 
-    @Parameterized.Parameters
-    public static Iterable<? extends Object> data() {
-        return Arrays.asList("first test", "second test");
-    }
-
     @Before
     public void setUp() {
         commonUtils = new CommonUtils();
@@ -35,12 +26,18 @@ public class CommonUtilsTest {
 
 
     /**
-     * @params {name} will come from DataPoints data_User_Name with expected theories
+     * @params {name} will come from Params values with expected result
+     * ->  {"MajedurRahman , false"} [0] -> NameParameter [1] -> expectedParameter
      */
     @Test
-    @Theory
-    public void validateUserName(String name) {
-        System.out.println(name);
+    @Parameters(value = {
+            "MajedurRahman , true",
+            "Majedur , true",
+            " , false",
+            "Majedur , true",
+    })
+    public void validateUserName(String name, boolean expected) {
+        System.out.println("validateUserName : " + name);
         User user = new User();
         user.setUserName(name);
         user.setPassword("PassWord");
@@ -48,7 +45,7 @@ public class CommonUtilsTest {
 
         boolean result = commonUtils.validateUserName(user);
 
-        assertTrue(result);
+        assertEquals(expected, result);
 
     }
 
@@ -57,20 +54,22 @@ public class CommonUtilsTest {
      * @params {password} will inject from Parameters Annotation Item value
      */
     @Test
-    @Parameters({
+    @Parameters(value = {
             "289829829289",
             "782787287",
             "shjhjsoi2"
+
     })
     public void validateUserPasswordValidCondition(String password) {
-        System.out.println(password);
+        System.out.println("validateUserPasswordValidCondition : " + password);
         User user = new User();
         user.setUserName("Majedur");
         user.setPassword(password);
         user.setActive(true);
 
         boolean result = commonUtils.validateUserPassword(user);
-        assertTrue(result);
-
+        assertEquals(true, result);
     }
+
+
 }
