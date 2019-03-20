@@ -1,4 +1,4 @@
-package com.cse427.server.Controller;
+package com.cse427.server.controller;
 
 
 import com.cse427.server.Repository.UserRepository;
@@ -31,17 +31,16 @@ public class UserController {
 
             if (userNameValid && userPassValid) {
 
-
                 Optional<User> userByUserNameAndActive = userRepository.getUserByUserNameAndActive(user.getUserName(), true);
                 if (userByUserNameAndActive.isPresent()) {
-
                     return new ResponseCommon<User>(false, "UserName Already Exits", null);
                 } else {
-
                     User savedUser = userRepository.save(user);
                     return new ResponseCommon<User>(true, "", savedUser);
                 }
+                
             } else {
+
                 String result = "";
                 if (userNameValid) {
                     result = "User Name Not Valid";
@@ -50,7 +49,6 @@ public class UserController {
                     result = "User Pass Not Valid";
                 }
                 return new ResponseCommon<User>(false, result, null);
-
 
             }
         } catch (Exception ex) {
