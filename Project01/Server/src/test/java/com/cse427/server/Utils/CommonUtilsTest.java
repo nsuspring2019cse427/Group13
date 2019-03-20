@@ -16,9 +16,10 @@ import static org.junit.Assert.assertEquals;
 @RunWith(JUnitParamsRunner.class)
 public class CommonUtilsTest {
 
+    CommonUtils commonUtils;
+
     @DataPoints
     public static String[] data_User_Name = {"Majed", "Rahman", "Jhon"};
-    CommonUtils commonUtils;
 
     @Parameterized.Parameters
     public static Iterable<? extends Object> data() {
@@ -43,6 +44,7 @@ public class CommonUtilsTest {
         boolean result = commonUtils.validateUserName(user);
 
         assertEquals(true, result);
+
 
     }
 
