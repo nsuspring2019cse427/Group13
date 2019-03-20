@@ -14,4 +14,8 @@ public class CommonUtils {
 
         return user.getPassword() != null && !user.getPassword().isEmpty() && user.getPassword().length() > 7;
     }
+
+    public boolean validateUserEmail(User user) {
+        return false;
+    }
 }

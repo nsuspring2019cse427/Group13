@@ -18,9 +18,9 @@ public class CommonUtilsTest {
     @DataPoints
     public static String[] Data_User_Name = {"Majed", "Rahman", "Jhon"};
 
-    public final String DEFAULT_EMAIL = "majedur.rahman@northsouth.edu";
-    public final String DEFAULT_PASSWORD = "PassWord";
-    public final String DEFAULT_USER_NAME = "MajedurRahman";
+    public static final String DEFAULT_EMAIL = "majedur.rahman@northsouth.edu";
+    public static final String DEFAULT_PASSWORD = "PassWord";
+    public static final String DEFAULT_USER_NAME = "MajedurRahman";
 
     @Before
     public void setUp() {
@@ -72,6 +72,7 @@ public class CommonUtilsTest {
         System.out.println("validateUserPasswordValidCondition : " + password);
         User user = new User();
         user.setUserName(DEFAULT_USER_NAME);
+        user.setEmail(DEFAULT_EMAIL);
         user.setPassword(password);
         user.setActive(true);
 
@@ -81,8 +82,8 @@ public class CommonUtilsTest {
 
 
     /**
-     * @params {password} will inject from Parameters Annotation Item value
-     * ->  {"782787287 , true"} [0] -> PasswordParameter [1] -> expectedParameter
+     * @params {email} will inject from Parameters Annotation Item value
+     * ->  {"1420497042@northsouth.edu , true"} [0] -> PasswordParameter [1] -> expectedParameter
      */
     @Test
     @Parameters(value = {
@@ -91,12 +92,29 @@ public class CommonUtilsTest {
             "1420497042@northsouth.edu , true",
             "majedur@gmail.com , false",
             "gmail.com , false",
+            "majedur.rahman , false",
+            " , false",
+            "@, false",
             "northsouth.edu, false",
             "@northsouth.edu, false",
             "majedur@northsouth.edu, true",
-    })
-    public void validateUserEmail(String password, boolean expected) {
+            DEFAULT_USER_NAME + ", false",
+            DEFAULT_PASSWORD + ", false",
+            DEFAULT_EMAIL + ", true",
 
+    })
+    public void validateUserEmail(String email, boolean expected) {
+
+        System.out.println("validateUserEmail : " + email);
+        User user = new User();
+        user.setUserName(DEFAULT_USER_NAME);
+        user.setPassword(DEFAULT_PASSWORD);
+        user.setEmail(email);
+        user.setActive(true);
+
+        boolean result = commonUtils.validateUserEmail(user);
+
+        assertEquals(expected, result);
 
     }
 

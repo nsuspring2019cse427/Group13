@@ -1,4 +1,4 @@
-package com.cse427.server.Model;
+package com.cse427.server.model;
 
 
 import javax.persistence.Entity;
@@ -13,7 +13,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
+    private String email;
     private String userName;
     private String password;
     private boolean isActive;
@@ -25,6 +25,14 @@ public class User {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getUserName() {
