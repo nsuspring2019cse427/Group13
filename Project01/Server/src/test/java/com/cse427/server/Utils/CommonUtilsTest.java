@@ -56,7 +56,7 @@ public class CommonUtilsTest {
 
 
     /**
-     * @params {password} will inject from Parameters Annotation Item value
+     * @params {password ,expected } will inject from Parameters Annotation Item value
      * ->  {"782787287 , true"} [0] -> PasswordParameter [1] -> expectedParameter
      */
     @Test
@@ -82,7 +82,7 @@ public class CommonUtilsTest {
 
 
     /**
-     * @params {email} will inject from Parameters Annotation Item value
+     * @params {email , expected} will inject from Parameters Annotation Item value
      * ->  {"1420497042@northsouth.edu , true"} [0] -> PasswordParameter [1] -> expectedParameter
      */
     @Test

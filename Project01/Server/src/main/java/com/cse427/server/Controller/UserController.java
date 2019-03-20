@@ -38,7 +38,7 @@ public class UserController {
                     User savedUser = userRepository.save(user);
                     return new ResponseCommon<User>(true, "", savedUser);
                 }
-                
+
             } else {
 
                 String result = "";
