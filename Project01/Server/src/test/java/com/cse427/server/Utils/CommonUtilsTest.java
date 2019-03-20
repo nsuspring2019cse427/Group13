@@ -12,7 +12,7 @@ import org.junit.runners.Parameterized;
 
 import java.util.Arrays;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(JUnitParamsRunner.class)
 public class CommonUtilsTest {
@@ -20,7 +20,7 @@ public class CommonUtilsTest {
     CommonUtils commonUtils;
 
     @DataPoints
-    public static String[] data_User_Name = {"Majed", "Rahman", "Jhon"};
+    public static String[] Data_User_Name = {"Majed", "Rahman", "Jhon"};
 
     @Parameterized.Parameters
     public static Iterable<? extends Object> data() {
@@ -33,6 +33,10 @@ public class CommonUtilsTest {
 
     }
 
+
+    /**
+     * @params {name} will come from DataPoints data_User_Name with expected theories
+     */
     @Test
     @Theory
     public void validateUserName(String name) {
@@ -44,26 +48,29 @@ public class CommonUtilsTest {
 
         boolean result = commonUtils.validateUserName(user);
 
-        assertEquals(true, result);
+        assertTrue(result);
 
     }
 
+
+    /**
+     * @params {password} will inject from Parameters Annotation Item value
+     */
     @Test
     @Parameters({
             "289829829289",
             "782787287",
             "shjhjsoi2"
     })
-    public void validateUserPasswordValidCondition(String pass) {
-        System.out.println(pass);
+    public void validateUserPasswordValidCondition(String password) {
+        System.out.println(password);
         User user = new User();
         user.setUserName("Majedur");
-        user.setPassword(pass);
+        user.setPassword(password);
         user.setActive(true);
 
         boolean result = commonUtils.validateUserPassword(user);
-
-        assertEquals(true, result);
+        assertTrue(result);
 
     }
 }
