@@ -1,4 +1,4 @@
-package com.cse427.server.Model;
+package com.cse427.server.model;
 
 public class ResponseCommon<T> {
 

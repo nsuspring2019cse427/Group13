@@ -1,6 +1,7 @@
 package com.cse427.server.Utils;
 
-import com.cse427.server.Model.User;
+
+import com.cse427.server.model.User;
 
 public class CommonUtils {
 

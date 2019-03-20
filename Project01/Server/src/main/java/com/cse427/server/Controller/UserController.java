@@ -1,10 +1,10 @@
 package com.cse427.server.Controller;
 
 
-import com.cse427.server.Model.User;
 import com.cse427.server.Repository.UserRepository;
 import com.cse427.server.Utils.CommonUtils;
 import com.cse427.server.model.ResponseCommon;
+import com.cse427.server.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,8 +34,8 @@ public class UserController {
 
                 Optional<User> userByUserNameAndActive = userRepository.getUserByUserNameAndActive(user.getUserName(), true);
                 if (userByUserNameAndActive.isPresent()) {
-                    return new ResponseCommon<User>(false, "UserName Already Exits", null);
 
+                    return new ResponseCommon<User>(false, "UserName Already Exits", null);
                 } else {
 
                     User savedUser = userRepository.save(user);

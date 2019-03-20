@@ -1,6 +1,6 @@
 package com.cse427.server.Utils;
 
-import com.cse427.server.Model.User;
+import com.cse427.server.model.User;
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 import org.junit.Before;
@@ -17,6 +17,10 @@ public class CommonUtilsTest {
 
     @DataPoints
     public static String[] Data_User_Name = {"Majed", "Rahman", "Jhon"};
+
+    public final String DEFAULT_EMAIL = "majedur.rahman@northsouth.edu";
+    public final String DEFAULT_PASSWORD = "PassWord";
+    public final String DEFAULT_USER_NAME = "MajedurRahman";
 
     @Before
     public void setUp() {
@@ -40,7 +44,8 @@ public class CommonUtilsTest {
         System.out.println("validateUserName : " + name);
         User user = new User();
         user.setUserName(name);
-        user.setPassword("PassWord");
+        user.setEmail(DEFAULT_EMAIL);
+        user.setPassword(DEFAULT_PASSWORD);
         user.setActive(true);
 
         boolean result = commonUtils.validateUserName(user);
@@ -52,6 +57,7 @@ public class CommonUtilsTest {
 
     /**
      * @params {password} will inject from Parameters Annotation Item value
+     * ->  {"782787287 , true"} [0] -> PasswordParameter [1] -> expectedParameter
      */
     @Test
     @Parameters(value = {
@@ -61,17 +67,37 @@ public class CommonUtilsTest {
             "123 , false",
             " , false",
             "as112 , false",
-
     })
-    public void validateUserPasswordValidCondition(String password, boolean expected) {
+    public void validateUserPassword(String password, boolean expected) {
         System.out.println("validateUserPasswordValidCondition : " + password);
         User user = new User();
-        user.setUserName("Majedur");
+        user.setUserName(DEFAULT_USER_NAME);
         user.setPassword(password);
         user.setActive(true);
 
         boolean result = commonUtils.validateUserPassword(user);
         assertEquals(expected, result);
+    }
+
+
+    /**
+     * @params {password} will inject from Parameters Annotation Item value
+     * ->  {"782787287 , true"} [0] -> PasswordParameter [1] -> expectedParameter
+     */
+    @Test
+    @Parameters(value = {
+            "majedur.rahman@northsouth.edu , true",
+            "majedurz@northsouth.edu , true",
+            "1420497042@northsouth.edu , true",
+            "majedur@gmail.com , false",
+            "gmail.com , false",
+            "northsouth.edu, false",
+            "@northsouth.edu, false",
+            "majedur@northsouth.edu, true",
+    })
+    public void validateUserEmail(String password, boolean expected) {
+
+
     }
 
 
