@@ -2,6 +2,7 @@ package com.cse427.server.Utils;
 
 import com.cse427.server.Model.User;
 import junitparams.JUnitParamsRunner;
+import junitparams.Parameters;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoints;
@@ -45,8 +46,24 @@ public class CommonUtilsTest {
 
         assertEquals(true, result);
 
-
     }
 
+    @Test
+    @Parameters({
+            "289829829289",
+            "782787287",
+            "shjhjsoi2"
+    })
+    public void validateUserPasswordValidCondition(String pass) {
+        System.out.println(pass);
+        User user = new User();
+        user.setUserName("Majedur");
+        user.setPassword(pass);
+        user.setActive(true);
 
+        boolean result = commonUtils.validateUserPassword(user);
+
+        assertEquals(true, result);
+
+    }
 }
