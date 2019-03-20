@@ -1,7 +1,7 @@
 package com.cse427.server.Utils;
 
 
-import com.cse427.server.model.User;
+import com.cse427.server.Model.User;
 import org.apache.commons.validator.routines.EmailValidator;
 
 public class CommonUtils {

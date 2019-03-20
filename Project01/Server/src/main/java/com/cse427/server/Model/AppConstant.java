@@ -1,4 +1,4 @@
-package com.cse427.server.model;
+package com.cse427.server.Model;
 
 public class AppConstant {
     public static final String ADMIN = "admin";

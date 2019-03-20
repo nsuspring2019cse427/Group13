@@ -1,15 +1,17 @@
-package com.cse427.server.controller;
+package com.cse427.server.Controller;
 
 
+import com.cse427.server.Model.ResponseCommon;
+import com.cse427.server.Model.User;
 import com.cse427.server.Repository.UserRepository;
 import com.cse427.server.Utils.CommonUtils;
-import com.cse427.server.model.ResponseCommon;
-import com.cse427.server.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -56,4 +58,12 @@ public class UserController {
             return new ResponseCommon<User>(true, ex.getMessage(), null);
         }
     }
+
+
+    @GetMapping("/getAll")
+    public List<User> getAllActiveUser() {
+        return userRepository.getUserByActiveIsTrue();
+    }
+
+
 }
