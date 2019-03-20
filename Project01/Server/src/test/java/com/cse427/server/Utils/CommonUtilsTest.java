@@ -55,12 +55,15 @@ public class CommonUtilsTest {
      */
     @Test
     @Parameters(value = {
-            "289829829289",
-            "782787287",
-            "shjhjsoi2"
+            "289829829289 , true",
+            "782787287 , true",
+            "shjhjsoi2 , true",
+            "123 , false",
+            " , false",
+            "as112 , false",
 
     })
-    public void validateUserPasswordValidCondition(String password) {
+    public void validateUserPasswordValidCondition(String password, boolean expected) {
         System.out.println("validateUserPasswordValidCondition : " + password);
         User user = new User();
         user.setUserName("Majedur");
@@ -68,7 +71,7 @@ public class CommonUtilsTest {
         user.setActive(true);
 
         boolean result = commonUtils.validateUserPassword(user);
-        assertEquals(true, result);
+        assertEquals(expected, result);
     }
 
 

@@ -1,10 +1,10 @@
 package com.cse427.server.Controller;
 
 
-import com.cse427.server.Model.ResponseCommon;
 import com.cse427.server.Model.User;
 import com.cse427.server.Repository.UserRepository;
 import com.cse427.server.Utils.CommonUtils;
+import com.cse427.server.model.ResponseCommon;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,14 +23,13 @@ public class UserController {
 
     @PostMapping("/signUp")
     public ResponseCommon<User> signUpUser(User user) {
-
         try {
 
             boolean userNameValid = new CommonUtils().validateUserName(user);
             boolean userPassValid = new CommonUtils().validateUserPassword(user);
 
 
-            if (userNameValid) {
+            if (userNameValid && userPassValid) {
 
 
                 Optional<User> userByUserNameAndActive = userRepository.getUserByUserNameAndActive(user.getUserName(), true);
@@ -43,13 +42,20 @@ public class UserController {
                     return new ResponseCommon<User>(true, "", savedUser);
                 }
             } else {
-                throw new Exception("UserNotValid");
+                String result = "";
+                if (userNameValid) {
+                    result = "User Name Not Valid";
+
+                } else if (userPassValid) {
+                    result = "User Pass Not Valid";
+                }
+                return new ResponseCommon<User>(false, result, null);
+
+
             }
         } catch (Exception ex) {
             ex.printStackTrace();
             return new ResponseCommon<User>(true, ex.getMessage(), null);
         }
-
-
     }
 }

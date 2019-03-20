@@ -10,6 +10,7 @@ public class CommonUtils {
     }
 
     public boolean validateUserPassword(User user) {
-        return user.getPassword() == null || !user.getPassword().isEmpty() || user.getPassword().length() >= 7;
+
+        return user.getPassword() != null && !user.getPassword().isEmpty() && user.getPassword().length() > 7;
     }
 }
