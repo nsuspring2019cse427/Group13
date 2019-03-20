@@ -97,7 +97,8 @@ public class CommonUtilsTest {
             "@, false",
             "northsouth.edu, false",
             "@northsouth.edu, false",
-            "majedur@northsouth.edu, true",
+            "maj;edur@northsouth.edu, false",
+            "majedur@northsouth.edu.bd, false",
             DEFAULT_USER_NAME + ", false",
             DEFAULT_PASSWORD + ", false",
             DEFAULT_EMAIL + ", true",
@@ -106,6 +107,7 @@ public class CommonUtilsTest {
     public void validateUserEmail(String email, boolean expected) {
 
         System.out.println("validateUserEmail : " + email);
+
         User user = new User();
         user.setUserName(DEFAULT_USER_NAME);
         user.setPassword(DEFAULT_PASSWORD);

@@ -2,6 +2,7 @@ package com.cse427.server.Utils;
 
 
 import com.cse427.server.model.User;
+import org.apache.commons.validator.routines.EmailValidator;
 
 public class CommonUtils {
 
@@ -16,6 +17,14 @@ public class CommonUtils {
     }
 
     public boolean validateUserEmail(User user) {
+        final String emailLastPart = "@northsouth.edu";
+
+        if (user != null && user.getEmail() != null) {
+            boolean valid = EmailValidator.getInstance().isValid(user.getEmail());
+            if (valid) {
+                return user.getEmail().toLowerCase().endsWith(emailLastPart);
+            }
+        }
         return false;
     }
 }
