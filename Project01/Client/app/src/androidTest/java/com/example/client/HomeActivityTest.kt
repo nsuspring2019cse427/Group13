@@ -47,7 +47,7 @@ class HomeActivityTest {
 
     @Test
     fun signUpButtonClickTest(){
-        onView(withId(R.id.loginButton)).check(matches(isClickable()))
+        onView(withId(R.id.signUpButton)).check(matches(isClickable()))
         onView(withId(R.id.signUpButton)).perform(click())
     }
 
