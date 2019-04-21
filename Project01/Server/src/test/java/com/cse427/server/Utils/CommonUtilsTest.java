@@ -22,6 +22,7 @@ public class CommonUtilsTest {
     public static final String DEFAULT_PASSWORD = "PassWord";
     public static final String DEFAULT_USER_NAME = "MajedurRahman";
 
+
     @Before
     public void setUp() {
         commonUtils = new CommonUtils();
