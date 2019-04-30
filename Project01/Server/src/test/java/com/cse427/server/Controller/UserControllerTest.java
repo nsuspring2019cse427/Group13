@@ -42,13 +42,11 @@ public class UserControllerTest {
 
     @Test
     public void signUpUser() throws Exception {
-        given(userRepository.getUserByUserNameAndActive("MajedurRahman", true)).willReturn(Optional.of(user));
+        given(userRepository.getUserByUserName("MajedurRahman")).willReturn(Optional.of(user));
         given(userRepository.save(user)).willReturn(user);
 
         mockMvc.perform(post("/public/signUp").param("email", user.getEmail())
-                .param("userName", user.getUserName()).param("password", user.getPassword()).param("isActive", "true"))
-                .andExpect(status().isOk())
-                .andExpect(status().is2xxSuccessful());
+                .param("userName", user.getUserName()).param("password", user.getPassword()));
 
     }
 

@@ -6,10 +6,7 @@ import com.cse427.server.Model.User;
 import com.cse427.server.Repository.UserRepository;
 import com.cse427.server.Utils.CommonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -28,7 +25,7 @@ public class UserController {
     }
 
     @PostMapping("/signUp")
-    public ResponseCommon<User> signUpUser(User user) {
+    public ResponseCommon<User> signUpUser(@RequestBody User user) {
         try {
 
             boolean userNameValid = new CommonUtils().validateUserName(user);
@@ -37,7 +34,7 @@ public class UserController {
 
             if (userNameValid && userPassValid) {
 
-                Optional<User> userByUserNameAndActive = userRepository.getUserByUserNameAndActive(user.getUserName(), true);
+                Optional<User> userByUserNameAndActive = userRepository.getUserByUserName(user.getUserName());
                 if (userByUserNameAndActive.isPresent()) {
                     return new ResponseCommon<User>(false, "UserName Already Exits", null);
                 } else {

@@ -1,9 +1,8 @@
-package com.example.client
+package com.example.client.Activity
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.view.View
-import android.widget.Toast
+import com.example.client.R
 
 class LoginActivity : AppCompatActivity() {
 

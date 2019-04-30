@@ -16,13 +16,11 @@ public class User {
     private String email;
     private String userName;
     private String password;
-    private boolean isActive;
 
     public User(String email, String userName, String password, boolean isActive) {
         this.email = email;
         this.userName = userName;
         this.password = password;
-        this.isActive = isActive;
     }
 
     public User() {
@@ -60,11 +58,4 @@ public class User {
         this.password = password;
     }
 
-    public boolean isActive() {
-        return isActive;
-    }
-
-    public void setActive(boolean active) {
-        isActive = active;
-    }
 }

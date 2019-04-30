@@ -47,7 +47,6 @@ public class CommonUtilsTest {
         user.setUserName(name);
         user.setEmail(DEFAULT_EMAIL);
         user.setPassword(DEFAULT_PASSWORD);
-        user.setActive(true);
 
         boolean result = commonUtils.validateUserName(user);
 
@@ -75,7 +74,6 @@ public class CommonUtilsTest {
         user.setUserName(DEFAULT_USER_NAME);
         user.setEmail(DEFAULT_EMAIL);
         user.setPassword(password);
-        user.setActive(true);
 
         boolean result = commonUtils.validateUserPassword(user);
         assertEquals(expected, result);
@@ -113,7 +111,6 @@ public class CommonUtilsTest {
         user.setUserName(DEFAULT_USER_NAME);
         user.setPassword(DEFAULT_PASSWORD);
         user.setEmail(email);
-        user.setActive(true);
 
         boolean result = commonUtils.validateUserEmail(user);
 

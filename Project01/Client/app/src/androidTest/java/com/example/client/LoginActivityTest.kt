@@ -10,10 +10,9 @@ import android.support.test.runner.AndroidJUnit4
 import android.text.method.PasswordTransformationMethod
 import android.view.View
 import android.widget.EditText
+import com.example.client.Activity.LoginActivity
 import org.hamcrest.Description
 import org.hamcrest.Matcher
-import org.junit.After
-import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -27,8 +26,8 @@ class LoginActivityTest {
     val rule = ActivityTestRule(LoginActivity::class.java)
 
 
-    val email: String = "Majedur.Rahman@Northsouth.edu"
-    val password: String = "secretPass"
+    private val email: String = "Rahman@Northsouth.edu"
+    private val password: String = "s3cretPa5s"
 
 
     @Test
@@ -55,7 +54,7 @@ class LoginActivityTest {
 
 
 
-        onView(withId(R.id.emailEdittext)).check(matches(withText(data!!.text.toString())))
+        onView(withId(R.id.emailEdittext)).check(matches(withText(data!!.text.toString().trim())))
         onView(withId(R.id.emailEdittext)).check(matches(withText(email)))
     }
 

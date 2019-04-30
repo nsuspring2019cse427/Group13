@@ -41,15 +41,15 @@ public class UserRepositoryTest {
 
     @Test
     @Parameters(value = {
-            "MajedurRahman , true , Majedur.Rahman.mmr@gmail.com , asd89sa9d8s",
-            "Majedur.Rahman , false , Majedur.Rahman.mmr@Northsouth.edu , 2323232",
-            "Monit , true , mmr@gmail.com , smdsnmd",
+            "MajedurRahman , true , Majedur.Rahman.mmr@Northsouth.edu , asd89sa9d8s",
+            "Majedur.Rahman , false , Majedur.Rahman.mmr@gmail.com , 2323232",
+            "Monir , true , mmr@Northsouth.edu , smdsnmd",
     })
     public void getUserByUserNameAndActive(String nameUser, boolean isActive, String eamil, String pass) {
         User user = new User(eamil, nameUser, pass, isActive);
         System.out.println(user.toString());
-        given(userRepository.getUserByUserNameAndActive(nameUser, isActive)).willReturn(Optional.of(user));
-        Optional<User> userByUserNameAndActive = userRepository.getUserByUserNameAndActive(nameUser, isActive);
+        given(userRepository.getUserByUserName(nameUser)).willReturn(Optional.of(user));
+        Optional<User> userByUserNameAndActive = userRepository.getUserByUserName(nameUser);
         assertEquals(userByUserNameAndActive, Optional.of(user));
 
     }
