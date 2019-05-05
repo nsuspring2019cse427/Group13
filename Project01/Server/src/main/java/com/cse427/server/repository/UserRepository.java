@@ -1,16 +1,21 @@
-package com.cse427.server.repository;
+package com.cse427.server.Repository;
 
-import com.cse427.server.model.User;
+import com.cse427.server.Model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
+
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
-    Optional<User> findByUsername(String username);
 
-    Boolean existsByUsername(String username);
+    Optional<User> getUserByUserName(String userName);
 
-    Boolean existsByEmail(String email);
+
+    @Query("select  u from User u where isActive  = true ")
+    List<User> getUserByActiveIsTrue();
+
 }
